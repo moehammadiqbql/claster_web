@@ -39,8 +39,8 @@ $barang = query('SELECT * FROM barang');
         <td><?= $b['stok']; ?></td>
         <td><img src="img/<?= $b['gambar']; ?>" width='70px'></td>
         <td>
-          <a href="">edit |</a>
-          <a href="hapus.php?id=<?= $b["id_barang"]; ?>" onclick="return confirm('yakin?')">hapus</a>
+          <a href="edit.php?id_barang=<?= $b['id_barang']; ?>">edit |</a>
+          <a href="hapus.php?id_barang=<?= $b["id_barang"]; ?>" onclick="return confirm('yakin?')">hapus</a>
         </td>
       </tr>
       <?php $i++; ?>

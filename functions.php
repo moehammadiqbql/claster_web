@@ -40,3 +40,25 @@ function hapus($id)
 
   return mysqli_affected_rows($conn);
 }
+
+function edit($data)
+{
+  global $conn;
+  $id = $data["id_barang"];
+  $nama = htmlspecialchars($data["nama_barang"]);
+  $harga = htmlspecialchars($data["harga"]);
+  $stok = htmlspecialchars($data["stok"]);
+  $gambar = htmlspecialchars($data["gambar"]);
+
+  $query = "UPDATE barang SET 
+            nama_barang = '$nama',
+            harga = '$harga',
+            stok = '$stok',
+            gambar = '$gambar'
+          WHERE id_barang = $id
+        ";
+
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
+}

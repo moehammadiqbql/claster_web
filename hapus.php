@@ -1,7 +1,7 @@
 <?php
 require 'functions.php';
 
-$id = $_GET["id"];
+$id = $_GET["id_barang"];
 
 if (hapus($id) > 0) {
   echo "
