@@ -18,6 +18,9 @@ $barang = query('SELECT * FROM barang');
 <body>
   <h1>Data Barang</h1>
 
+  <a href="tambah.php">Tambah data barang</a>
+  <br><br>
+
   <table border="1" cellpadding="10" cellspacing="0">
     <tr>
       <th>#</th>

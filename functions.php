@@ -13,3 +13,20 @@ function query($query)
   }
   return $rows;
 }
+
+
+function tambah($data)
+{
+  global $conn;
+  $nama = htmlspecialchars($data["nama_barang"]);
+  $harga = htmlspecialchars($data["harga"]);
+  $stok = htmlspecialchars($data["stok"]);
+  $gambar = htmlspecialchars($data["gambar"]);
+
+  $query = "INSERT INTO barang VALUES 
+				( '', '$nama', '$harga', '$stok', '$gambar' )";
+
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
+}
