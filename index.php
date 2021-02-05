@@ -40,7 +40,7 @@ $barang = query('SELECT * FROM barang');
         <td><img src="img/<?= $b['gambar']; ?>" width='70px'></td>
         <td>
           <a href="">edit |</a>
-          <a href="">hapus</a>
+          <a href="hapus.php?id=<?= $b["id_barang"]; ?>" onclick="return confirm('yakin?')">hapus</a>
         </td>
       </tr>
       <?php $i++; ?>
