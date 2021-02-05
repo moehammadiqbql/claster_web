@@ -1,3 +1,11 @@
+<?php
+require 'functions.php';
+
+$barang = query('SELECT * FROM barang');
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,11 +18,30 @@
 <body>
   <h1>Data Barang</h1>
 
-  <table>
+  <table border="1" cellpadding="10" cellspacing="0">
     <tr>
       <th>#</th>
-
+      <th>Nama Barang</th>
+      <th>Harga</th>
+      <th>Stok</th>
+      <th>Gambar</th>
+      <th>Aksi</th>
     </tr>
+    <?php $i = 1; ?>
+    <?php foreach ($barang as $b) : ?>
+      <tr>
+        <td><?= $i; ?></td>
+        <td><?= $b['nama_barang']; ?></td>
+        <td><?= $b['harga']; ?></td>
+        <td><?= $b['stok']; ?></td>
+        <td><img src="img/<?= $b['gambar']; ?>" width='70px'></td>
+        <td>
+          <a href="">edit |</a>
+          <a href="">hapus</a>
+        </td>
+      </tr>
+      <?php $i++; ?>
+    <?php endforeach; ?>
   </table>
 </body>
 
