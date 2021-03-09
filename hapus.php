@@ -4,16 +4,16 @@ require 'functions.php';
 $id = $_GET["id_barang"];
 
 if (hapus($id) > 0) {
-  echo "
+	echo "
 			<script>
 				alert('Data berhasil dihapus');
-				document.location.href = 'index.php';
+				document.location.href = 'tambah.php';
 			</script>
 		";
 } else {
-  echo "<script>
+	echo "<script>
 				alert('Data gagal dihapus');
-				document.location.href = 'index.php';
+				document.location.href = 'tambah.php';
 			</script>
 		";
 }

@@ -21,7 +21,13 @@ function tambah($data)
   $nama = htmlspecialchars($data["nama_barang"]);
   $harga = htmlspecialchars($data["harga"]);
   $stok = htmlspecialchars($data["stok"]);
-  $gambar = htmlspecialchars($data["gambar"]);
+  $gambar = $_FILES['gambar']['name'];
+
+  move_uploaded_file($_FILES['gambar']['tmp_name'], 'img/' . $gambar);
+
+  if (!$gambar) {
+    $gambar = "defaul-t.jpg";
+  }
 
   $query = "INSERT INTO barang VALUES 
 				( '', '$nama', '$harga', '$stok', '$gambar' )";
@@ -48,7 +54,13 @@ function edit($data)
   $nama = htmlspecialchars($data["nama_barang"]);
   $harga = htmlspecialchars($data["harga"]);
   $stok = htmlspecialchars($data["stok"]);
-  $gambar = htmlspecialchars($data["gambar"]);
+  $gambar = $_FILES['gambar']['name'];
+
+  move_uploaded_file($_FILES['gambar']['tmp_name'], 'img/' . $gambar);
+
+  if (!$gambar) {
+    $gambar = "defaul-t.jpg";
+  }
 
   $query = "UPDATE barang SET 
             nama_barang = '$nama',
@@ -58,6 +70,25 @@ function edit($data)
           WHERE id_barang = $id
         ";
 
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
+}
+
+
+function transaksi($data)
+{
+  global $conn;
+  $tanggal = htmlspecialchars($data['tanggal']);
+  $id_barang = htmlspecialchars($data["id_barang"]);
+  $jumlah = htmlspecialchars($data["jumlah"]);
+  $total = htmlspecialchars($data["total"]);
+
+  $query = "INSERT INTO transaksi VALUES 
+				( '','$tanggal', '$id_barang', '$jumlah', '$total' )";
+
+  // var_dump($query);
+  // die;
   mysqli_query($conn, $query);
 
   return mysqli_affected_rows($conn);
